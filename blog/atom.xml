@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://littlehorse.dev/blog</id>
-    <title>LittleHorse Blog</title>
+    <title>LittleHorse Orchestrator Blog</title>
     <updated>2024-01-28T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://littlehorse.dev/blog"/>
-    <subtitle>LittleHorse Blog</subtitle>
+    <subtitle>LittleHorse Orchestrator Blog</subtitle>
     <icon>https://littlehorse.dev/img/logo.jpg</icon>
     <entry>
         <title type="html"><![CDATA[Releasing 0.7]]></title>
@@ -96,7 +96,7 @@
 <li><code>ERROR</code> means an unexpected <em>technical</em> failure occurred. For example, a <code>TaskRun</code> timed out because a third-party API was down.</li>
 <li><code>EXCEPTION</code> means that a failure occurred at the <em>business process level</em>. For example, you might use an <code>EXCEPTION</code> when a customer has insufficient funds in her account to complete an order.</li>
 </ul>
-<p>Just like in programming, you can throw and catch <code>EXCEPTION</code>s (and you can also catch <code>ERROR</code>s). For a blog post that goes in-depth into how LittleHorse makes it easy to handle failures in your workflows, check out our <a href="https://littlehorse.dev/docs/concepts/exception-handling">Failure Handling Docs</a>.</p>
+<p>Just like in programming, you can throw and catch <code>EXCEPTION</code>s (and you can also catch <code>ERROR</code>s). For a blog post that goes in-depth into how LittleHorse makes it easy to handle failures in your workflows, check out our <a href="https://littlehorse.dev/docs/concepts/workflows#failure-handling">Failure Handling Docs</a>.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="lh-server-monitoring">LH Server Monitoring<a href="https://littlehorse.dev/blog/littlehorse-0.5.0-release#lh-server-monitoring" class="hash-link" aria-label="Direct link to LH Server Monitoring" title="Direct link to LH Server Monitoring">​</a></h3>
 <p>We added a new path <code>/status</code> on the LH Server's health endpoint (port <code>1822</code> by default) which can be used to inspect the status of all internal Kafka Streams <code>Task</code>s on the LH Server. It presents the following information:</p>
 <ul>
