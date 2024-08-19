@@ -16,7 +16,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="LittleHorse Orchestrator" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.e20a7c63.css">
-<script src="/assets/js/runtime~main.93584140.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.ddf03914.js" defer="defer"></script>
 <script src="/assets/js/main.487e3580.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -504,7 +504,7 @@ our various SDK&#x27;s.</p>
 <p>Message used by Task Worker to register itself to the server and ask for assignments of
 servers to poll.</p>
 <p>Used by the Task Worker SDK; generally, you shouldn&#x27;t have to touch this manually.</p>
-<table><thead><tr><th>Field</th><th>Label</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>task_worker_id</code></td><td></td><td>string</td><td>Is the ID of the Task Worker.</td></tr><tr><td><code>task_def_id</code></td><td></td><td><a href="#taskdefid">TaskDefId</a></td><td>The TaskDef the worker wants to poll for.</td></tr><tr><td><code>listener_name</code></td><td></td><td>string</td><td>The listener that the worker is polling on. Used by the server to determine which advertised hosts to return.</td></tr></tbody></table>
+<table><thead><tr><th>Field</th><th>Label</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>task_worker_id</code></td><td></td><td>string</td><td>Is the ID of the Task Worker.</td></tr><tr><td><code>task_def_id</code></td><td></td><td><a href="#taskdefid">TaskDefId</a></td><td>The TaskDef the worker wants to poll for.</td></tr></tbody></table>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="registertaskworkerresponse">Message <code>RegisterTaskWorkerResponse</code><a href="#registertaskworkerresponse" class="hash-link" aria-label="Direct link to registertaskworkerresponse" title="Direct link to registertaskworkerresponse">​</a></h3>
 <p>Response containing list of Servers that the Task Worker should connect to and start polling from.
 Only used internally by the Task Worker SDK.</p>
