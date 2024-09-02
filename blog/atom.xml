@@ -2,11 +2,153 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://littlehorse.dev/blog</id>
     <title>LittleHorse Orchestrator Blog</title>
-    <updated>2024-08-27T00:00:00.000Z</updated>
+    <updated>2024-09-02T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://littlehorse.dev/blog"/>
     <subtitle>LittleHorse Orchestrator Blog</subtitle>
     <icon>https://littlehorse.dev/img/logo.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Microservices and Workflow: A Match Made in Heaven]]></title>
+        <id>https://littlehorse.dev/blog/microservices-and-workflow</id>
+        <link href="https://littlehorse.dev/blog/microservices-and-workflow"/>
+        <updated>2024-09-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[While they are often necessary, microservices are a headache. Fortunately, the right workflow engine (such as LittleHorse) can drastically reduce the difficulty of managing microservices.]]></summary>
+        <content type="html"><![CDATA[<p>While they are often necessary, microservices are a headache. Fortunately, the right workflow engine (such as LittleHorse) can drastically reduce the difficulty of managing microservices.</p>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>This is the third and final part of a 3-part blog series:</p><ol>
+<li><a href="https://littlehorse.dev/blog/promise-of-microservices">The Promise of Microservices</a></li>
+<li><a href="https://littlehorse.dev/blog/challenge-of-microservices">The Challenge with Microservices</a></li>
+<li><strong>[This Post]</strong> Workflow and Microservices: A Match Made in Heaven</li>
+</ol></div></div>
+<p>If you're just joining for the third blog post, we have so far established that microservices are an effective tool for allowing your engineering team to grow beyond just a handful of people working on an enterprise application. However, microservice systems are by nature <a href="https://littlehorse.dev/blog/challenge-of-microservices#microservices-are-leaderless"><strong>Leaderless</strong></a> and <a href="https://littlehorse.dev/blog/challenge-of-microservices#microservices-are-distributed"><strong>Distributed</strong></a>, which yields challenges in:</p>
+<ul>
+<li><a href="https://littlehorse.dev/blog/challenge-of-microservices#observability"><strong>Observability</strong></a>,</li>
+<li><a href="https://littlehorse.dev/blog/challenge-of-microservices#reliability-and-correctness"><strong>Reliability</strong></a>, and</li>
+<li><a href="https://littlehorse.dev/blog/challenge-of-microservices#microservice-coupling"><strong>Complexity Management</strong></a>.</li>
+</ul>
+<p>Those challenges inspired me to create <a href="https://littlehorse.dev/docs/concepts" target="_blank" rel="noopener noreferrer">LittleHorse</a> in the fall of 2021. LittleHorse provides primitives and guardrails out of the box which make it easier to wrangle with distributed systems and coordinate processes/transactions across multiple microservices.</p>
+<p>In this post, we'll discuss:</p>
+<ol>
+<li>What <em>workflow</em> means.</li>
+<li>How LittleHorse's workflow orchestration capabilities make it easier for you to reliably orchestrate complex business processes.</li>
+</ol>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>tip</div><div class="admonitionContent_BuS1"><p>Want to give LittleHorse a try? Get in touch with us!</p><ul>
+<li>Join the <a href="https://launchpass.com/littlehorsecommunity" target="_blank" rel="noopener noreferrer"><strong>LH Slack Community</strong></a> for the latest news and help from community experts.</li>
+<li>Check out our <a href="https://littlehorse.dev/docs/developer-guide/install" target="_blank" rel="noopener noreferrer"><strong>Getting Started</strong></a> page.</li>
+<li><a href="https://docs.google.com/forms/d/e/1FAIpQLScXVvTYy4LQnYoFoRKRQ7ppuxe0KgncsDukvm96qKN0pU5TnQ/viewform" target="_blank" rel="noopener noreferrer"><strong>Say hello</strong></a> if you'd like to get in touch with someone from the LittleHorse Enterprises team.</li>
+</ul></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-a-workflow">What is a Workflow?<a href="https://littlehorse.dev/blog/microservices-and-workflow#what-is-a-workflow" class="hash-link" aria-label="Direct link to What is a Workflow?" title="Direct link to What is a Workflow?">​</a></h2>
+<p>A workflow is a blueprint that defines a series of tasks to be performed (perhaps conditioned on certain inputs or external events) in order to achieve a business outcome.</p>
+<p>If you recall the e-commerce example from the <a href="https://littlehorse.dev/blog/challenge-of-microservices#the-nature-of-microservices">previous blog post</a>, you can think of the abstract checkout process as a workflow. This example is interesting because it demonstrates multiple characteristics of common business processes that make microservice development hard.</p>
+<p><img decoding="async" loading="lazy" alt="E-Commerce Checkout Process Diagram" src="https://littlehorse.dev/assets/images/2024-08-27-complex-checkout-915172cb1dfafc0a3e9a7cc0b042ac3a.png" width="1472" height="406" class="img_ev3q"></p>
+<p>First, a workflow can be <em>mission critical</em>. A customer would be very unhappy if the vendor charged their credit card but failed to ship their order. In technical terms, this means that the state of a workflow needs to be consistent and durable, which is hard to achieve in a distributed system.</p>
+<p>Next, a workflow can have exceptional cases. Our e-commerce flow has special logic to handle cases when the customer's credit card was invalid or when the ordered item was out of stock.</p>
+<p>Finally, a workflow can be <em>asynchronous</em>, meaning that it requires waiting for input from the external world in order to complete. For example, our e-commerce workflow sometimes must wait for a customer to update their credit card information before completing.</p>
+<p>The mission-critical nature of workflows, combined with asynchronous events and exceptional cases, places a premium on <em>consistency.</em> The results of workflows must be predictable for customers and easy to reason about for business managers and software engineers.</p>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>A technical or business process does not need to satisfy all three characteristics to be a "workflow." In fact, simple processes with just one or two linear steps can benefit from a workflow engine.</p></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="workflow-engines">Workflow Engines<a href="https://littlehorse.dev/blog/microservices-and-workflow#workflow-engines" class="hash-link" aria-label="Direct link to Workflow Engines" title="Direct link to Workflow Engines">​</a></h3>
+<p>A workflow engine is a software system that makes sure the trains run on time in your processes. To use a workflow engine, you must:</p>
+<ol>
+<li><strong>Define your Tasks</strong>, which are units of work that can be executed in a workflow, and write <a href="https://littlehorse.dev/docs/concepts/tasks" target="_blank" rel="noopener noreferrer">Task Workers</a> which implement small functions or methods in code to execute those tasks.</li>
+<li><strong>Register a Workflow Specification</strong> (we call it a <a href="https://littlehorse.dev/docs/concepts/workflows" target="_blank" rel="noopener noreferrer"><code>WfSpec</code> in LittleHorse</a>) which specifies what tasks to execute and when.</li>
+<li><strong>Run your workflow</strong> so that the workflow engine can orchestrate the process to completion.</li>
+</ol>
+<p><img decoding="async" loading="lazy" alt="LittleHorse Architecture" src="https://littlehorse.dev/assets/images/2024-08-28-lh-application-8847f083fce679fe41abec88d4375125.png" width="1846" height="1019" class="img_ev3q"></p>
+<p><a href="https://littlehorse.dev/docs/developer-guide/task-worker-development" target="_blank" rel="noopener noreferrer">Task Workers</a> are where a workflow can interface with the outside world. Since a Task in a workflow results in the LittleHorse SDK calling a programming function/method of your choosing, Task Workers allow LittleHorse to integrate with any system. Task Workers can make database queries, call external API's, provision infrastructure on AWS, send push notifications to customer mobile apps, perform calculations, call an LLM API, and more.</p>
+<p>In LittleHorse, the <code>WfSpec</code> is <a href="https://littlehorse.dev/docs/developer-guide/wfspec-development" target="_blank" rel="noopener noreferrer">defined in code</a> in a language of your choice. Because LittleHorse was written with developers in mind, our DSL's have all of the primitives that you'd expect in a programming language: variables, control flow, exception handling, child threads, interrupts, and awaiting for external events. This allows workflows to be:</p>
+<ul>
+<li>Easy to reason about.</li>
+<li>Tracked in version control.</li>
+<li>Familiar and easy to learn.</li>
+</ul>
+<p>Once you tell LittleHorse to <a href="https://littlehorse.dev/docs/developer-guide/grpc/running-workflows" target="_blank" rel="noopener noreferrer">run an instance of your <code>WfSpec</code></a>, LittleHorse will oversee the entire process until it completes. Failed tasks will be retried, every step will be journaled, and the state of your processes will be safely and durably persisted while waiting for external triggers.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="why-workflow">Why Workflow?<a href="https://littlehorse.dev/blog/microservices-and-workflow#why-workflow" class="hash-link" aria-label="Direct link to Why Workflow?" title="Direct link to Why Workflow?">​</a></h2>
+<p>Microservice applications that are designed as distributed workflows without a workflow engine (like a chain of dominoes falling) present operational challenges because there is no "leader" providing oversight over the microservice processes. Thankfully, a developer-focused and horizontally-scalable workflow engine like LittleHorse can fill the "leader" role, thus providing oversight and reliability, and taming the complexity of your business processes.</p>
+<p>Additionally, using a workflow engine allows you to develop a set of <em>reusable</em> and <em>modular</em> tasks which can be easily dropped into any business workflow with a common API. Rather than accumulating tech debt, workflow engines allow you to accumulate a set of useful lego bricks.</p>
+<p>In most existing organizations there's a long list of API calls required to simply <em>run</em> a workflow.  Training engineers to use all of the new APIs while securely distributing access and permissions causes confusion and slow development cycles.  Workflow engines provide a single API and single system that allows anyone to securely manage, run, and operate complex workflows.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="mission-critical-oversight">Mission Critical Oversight<a href="https://littlehorse.dev/blog/microservices-and-workflow#mission-critical-oversight" class="hash-link" aria-label="Direct link to Mission Critical Oversight" title="Direct link to Mission Critical Oversight">​</a></h3>
+<p>Mission critical business workflows leave no room for technical failures and outages. However, as we discussed <a href="https://littlehorse.dev/blog/challenge-of-microservices#reliability-and-correctness">last week</a>, the distributed nature of microservices means that technical failures are not likely but rather certain. LittleHorse provides retries and durable execution capabilities out of the box, removing the need to create complex infrastructure for cross-service transactions (such as dead-letter queues, Outbox tables, and the SAGA pattern).</p>
+<p>Additionally, mission-critical processes must be <em>audited</em> and <em>observed</em> in a secure manner with proper access controls. LittleHorse supports this—every step in a workflow is journaled, auditable, and searchable in our dashboard. When humans execute <a href="https://littlehorse.dev/docs/concepts/user-tasks" target="_blank" rel="noopener noreferrer">User Tasks</a>, you can view an audit trail of when and to whom it was assigned and executed; you can see when each <code>TaskRun</code> started, completed, and failed (and with what inputs). Our <a href="https://littlehorse.dev/docs/concepts/principals-and-tenants" target="_blank" rel="noopener noreferrer">ACL's and Multi-Tenancy</a> capabilities (and "Masked Data") ensure that the data remains accessible only to those who must see it.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="simple-asynchronous-processing">Simple Asynchronous Processing<a href="https://littlehorse.dev/blog/microservices-and-workflow#simple-asynchronous-processing" class="hash-link" aria-label="Direct link to Simple Asynchronous Processing" title="Direct link to Simple Asynchronous Processing">​</a></h3>
+<p>For microservice developers, handling asynchronous business processes is challenging because it forces you to persist state, correlate events, and wire together callbacks into a non-linear flow. Developers often need to create database tables for ongoing transactions and maintain complex flow diagrams showing how different services integrate with business events.</p>
+<p>However, LittleHorse provides two primitives to simplify this process:</p>
+<ol>
+<li><a href="https://littlehorse.dev/docs/concepts/external-events" target="_blank" rel="noopener noreferrer"><strong>External Events</strong></a> allow workflows to block until something happens in the outside world, and then resume processing immediately thereafter.</li>
+<li><a href="https://littlehorse.dev/docs/concepts/user-tasks" target="_blank" rel="noopener noreferrer"><strong>User Tasks</strong></a> are like External Events but they model getting input from humans. User Tasks support reminders, assignment, groups, and users.</li>
+</ol>
+<p>Together, User Tasks and External Events allow developers to transform complex asynchronous flows (such as our e-commerce example when we wait for a customer to provide a new credit card) into a more manageable linear flow.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="exception-handling">Exception Handling<a href="https://littlehorse.dev/blog/microservices-and-workflow#exception-handling" class="hash-link" aria-label="Direct link to Exception Handling" title="Direct link to Exception Handling">​</a></h3>
+<p>Finally, just as processes can fail at the technical level, they can also fail at the business level. As per our ongoing e-commerce example, cards can run out of funds, items go out of stock, customers can cancel orders while they are being processed.</p>
+<p>Handling any given exceptional case in a business workflow might involve actions in several different microservices. Without a workflow engine, therefore, each exceptional case results in more and more complex interdependencies in your microservices, creating the notoriously feared "Distributed Monolith."</p>
+<p>In contrast, with LittleHorse as your workflow orchestrator, the dependencies between microservices are mitigated and workflow concepts such as <a href="https://littlehorse.dev/docs/concepts/workflows#failure-handling" target="_blank" rel="noopener noreferrer">Failure Handling</a> allow you to easily define rollbacks, SAGA patterns, and edge cases without introducing further accidental complexity into your microservices. This allows startups and enterprises alike to implement robust, enterprise-grade business applications without accumulating costly technical debt.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="conclusion">Conclusion<a href="https://littlehorse.dev/blog/microservices-and-workflow#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion">​</a></h2>
+<p>For a variety of reasons, startups and enterprises alike may need to work with microservices despite the challenges they bring. Thankfully, workflow engines like LittleHorse can mitigate those problems by providing oversight into your entire process.</p>
+<p>At the LittleHorse Council, we are very excited about the upcoming 1.0 release. Over the next few weeks, we will:</p>
+<ul>
+<li>Complete additional load tests, chaos tests, and benchmarks in preparation for 1.0.</li>
+<li>Blog about how you can write an e-commerce workflow in LittleHorse with Python.</li>
+<li>Do final testing before we release!</li>
+</ul>
+<p>And if you enjoyed this post, give us a star <a href="https://github.com/littlehorse-enterprises/littlehorse" target="_blank" rel="noopener noreferrer">on GitHub</a> and try out <a href="https://littlehorse.dev/docs/developer-guide/install" target="_blank" rel="noopener noreferrer">our quickstarts</a> to get going with LittleHorse in under 5 minutes.</p>]]></content>
+        <author>
+            <name>Colt McNealy</name>
+        </author>
+        <category label="Technical Analysis" term="Technical Analysis"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Releasing 0.11]]></title>
+        <id>https://littlehorse.dev/blog/littlehorse-0.11-release</id>
+        <link href="https://littlehorse.dev/blog/littlehorse-0.11-release"/>
+        <updated>2024-08-31T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Releasing LittleHorse `0.11`]]></summary>
+        <content type="html"><![CDATA[<p>The <code>0.11</code> release brings with it the ability to schedule workflows on a cron job, support for secret data, and various dashboard and SDK improvements. </p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-features">New Features<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#new-features" class="hash-link" aria-label="Direct link to New Features" title="Direct link to New Features">​</a></h2>
+<p>In addition to several new features, it's worth calling out that we upgraded the internal <code>org.apache.kafka:kafka-streams</code> dependency to <code>3.8.0</code>, which includes several crucial bug fixes (some of which were found by our Grumpy Maintainer, <a href="https://github.com/eduwercamacaro" target="_blank" rel="noopener noreferrer">Eduwer Camacaro</a>).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="dashboard">Dashboard<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#dashboard" class="hash-link" aria-label="Direct link to Dashboard" title="Direct link to Dashboard">​</a></h3>
+<p>The Dashboard saw several enhancements, the most important of which is the <code>ExternalEventDef</code> page, which allows users to view <code>ExternalEvent</code>s associated with an <code>ExternalEventDef</code>.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="scheduled-workflows">Scheduled Workflows<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#scheduled-workflows" class="hash-link" aria-label="Direct link to Scheduled Workflows" title="Direct link to Scheduled Workflows">​</a></h3>
+<p>The <code>ScheduledWfRun</code> feature creates a schedule that runs a <code>WfSpec</code> on a cron schedule. This is useful for periodic background tasks.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="secret-variables">Secret Variables<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#secret-variables" class="hash-link" aria-label="Direct link to Secret Variables" title="Direct link to Secret Variables">​</a></h3>
+<p>As of LittleHorse <code>0.11</code>, you may now mark a variable as <code>masked()</code>, which means that its value is obscured on the Dashboard and also via <code>lhctl get variable</code>.</p>
+<p>To make a variable Masked, you can do the following:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">WfRunVariable myVar = wf.addVariable("my-var", STR).masked();</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>We will also release a blog about this feature soon.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="saving-user-task-progress">Saving User Task Progress<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#saving-user-task-progress" class="hash-link" aria-label="Direct link to Saving User Task Progress" title="Direct link to Saving User Task Progress">​</a></h3>
+<p>With the <code>rpc SaveUserTaskRun</code>, it is now possible to save the results of a <code>UserTaskRun</code> without completing it. When you do this, an <code>event</code> is added to the audit log showing who saved the <code>UserTaskRun</code> and what results were saved.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="release-notes-and-artifacts">Release Notes and Artifacts<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#release-notes-and-artifacts" class="hash-link" aria-label="Direct link to Release Notes and Artifacts" title="Direct link to Release Notes and Artifacts">​</a></h2>
+<p>You can find the release notes and downloads on our GitHub page.</p>
+<ul>
+<li><a href="https://github.com/littlehorse-enterprises/littlehorse/releases/tag/v0.11.2" target="_blank" rel="noopener noreferrer"><strong><code>0.11.2</code></strong></a></li>
+<li><a href="https://github.com/littlehorse-enterprises/littlehorse/releases/tag/v0.11.2" target="_blank" rel="noopener noreferrer"><strong><code>0.11.1</code></strong></a></li>
+<li><a href="https://github.com/littlehorse-enterprises/littlehorse/releases/tag/v0.11.2" target="_blank" rel="noopener noreferrer"><strong><code>0.11.0</code></strong></a></li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="upgrading">Upgrading<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#upgrading" class="hash-link" aria-label="Direct link to Upgrading" title="Direct link to Upgrading">​</a></h2>
+<p>Just as since all releases since <code>0.8</code>, there were no breaking changes to our protocol buffer API. We do not anticipate any changes with our API in the future, either. This means that old client applications will continue to work with the LH Server <code>0.11</code> and beyond.</p>
+<p>However, we refactored the Go SDK to better follow GoLang conventions, which will require code changes (but no changes to the network protocol).</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="upgrading-the-go-sdk">Upgrading the Go SDK<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#upgrading-the-go-sdk" class="hash-link" aria-label="Direct link to Upgrading the Go SDK" title="Direct link to Upgrading the Go SDK">​</a></h3>
+<p>Now, instead of having multiple modules to import and use, there are only two:</p>
+<ol>
+<li>The <code>lhproto</code> module, with our GRPC clients and protobuf.</li>
+<li>The <code>littlehorse</code> module, with everything else.</li>
+</ol>
+<p>To add the go SDK to your project, you can run:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">go get github.com/littlehorse-enterprises/littlehorse@v0.11.2</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<p>Then, the imports are:</p>
+<div class="language-go codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-go codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	</span><span class="token string" style="color:#e3116c">"github.com/littlehorse-enterprises/littlehorse/sdk-go/lhproto"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">	</span><span class="token string" style="color:#e3116c">"github.com/littlehorse-enterprises/littlehorse/sdk-go/littlehorse"</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-next">What's Next?<a href="https://littlehorse.dev/blog/littlehorse-0.11-release#whats-next" class="hash-link" aria-label="Direct link to What's Next?" title="Direct link to What's Next?">​</a></h2>
+<p>Before committing to <a href="https://semver.org/" target="_blank" rel="noopener noreferrer">Semantic Versioning</a>, we will:</p>
+<ul>
+<li>Release our release schedule and support plan.</li>
+<li>Finish inspecting our SDK's for bugs and minor breaking API changes that we want to do before <code>1.0</code>.</li>
+<li>Finish our benchmarks, chaos tests, and load tests to ensure that our software meets the highest quality standards.</li>
+</ul>
+<p>We expect to release <code>1.0</code> in early October 2024.</p>]]></content>
+        <author>
+            <name>The LittleHorse Council</name>
+            <uri>https://littlehorse.io</uri>
+        </author>
+        <category label="LittleHorse Orchestrator" term="LittleHorse Orchestrator"/>
+        <category label="LittleHorse Releases" term="LittleHorse Releases"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Challenge of Microservices]]></title>
         <id>https://littlehorse.dev/blog/challenge-of-microservices</id>
@@ -17,7 +159,7 @@
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>This is the second part of a 3-part blog series:</p><ol>
 <li><a href="https://littlehorse.dev/blog/promise-of-microservices">The Promise of Microservices</a></li>
 <li><strong>[This Post]</strong> The Challenge with Microservices</li>
-<li><strong>[Coming Soon]</strong> Workflow and Microservices: A Match Made in Heaven</li>
+<li><a href="https://littlehorse.dev/blog/microservices-and-workflow">Workflow and Microservices: A Match Made in Heaven</a></li>
 </ol></div></div>
 <p>Last week, I <a href="https://littlehorse.dev/blog/promise-of-microservices">blogged</a> about the problems that microservices solve, and why they are not only beneficial but necessary in some cases (a good bellwether is the size of your engineering team: beyond 1 or 2 dozen engineers, you will probably start to feel some problems that can be solved with microservices).</p>
 <p>When done correctly, microservices remove several bottlenecks to scaling your business. However, even well-architected microservices bring significant <em>accidental complexity</em>.</p>
@@ -137,7 +279,7 @@
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>This is the first part of a 3-part blog series:</p><ol>
 <li><strong>[This Post]</strong> The Promise of Microservices</li>
 <li><a href="https://littlehorse.dev/blog/challenge-of-microservices">The Challenge with Microservices</a></li>
-<li><strong>[Coming Soon]</strong> Workflow and Microservices: A Match Made in Heaven</li>
+<li><a href="https://littlehorse.dev/blog/microservices-and-workflow">Workflow and Microservices: A Match Made in Heaven</a></li>
 </ol></div></div>
 <p>We've all <em>heard of</em> microservices, but unless you've read copious amounts of Sam Newman and Adam Bellemare's writings, you might be wondering whether, when, and why you should adopt them. In this blog post, we will examine the halcyon land promised by microservices.</p>
 <p>Microservices have been <a href="https://www.simform.com/blog/microservices-examples/" target="_blank" rel="noopener noreferrer">deployed widely</a> across many large enterprises, most notably Netflix, Uber, Shopify, PayPal, and others. As we will discover throughout this blog series, a microservice architecture is mandatory once you reach a certain size of company, and it's probably overkill for a 12-person startup. The gray area inbetween is the interesting part!</p>
@@ -203,7 +345,7 @@
         <id>https://littlehorse.dev/blog/littlehorse-0.10-release</id>
         <link href="https://littlehorse.dev/blog/littlehorse-0.10-release"/>
         <updated>2024-07-12T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[TBD]]></summary>
+        <summary type="html"><![CDATA[Releasing LittleHorse `0.10`]]></summary>
         <content type="html"><![CDATA[<p>The <code>0.10</code> release brings with it significant performance and reliability improvements. </p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="new-features">New Features<a href="https://littlehorse.dev/blog/littlehorse-0.10-release#new-features" class="hash-link" aria-label="Direct link to New Features" title="Direct link to New Features">​</a></h2>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="lhctl-binaries-and-release-notes"><code>lhctl</code> Binaries and Release Notes<a href="https://littlehorse.dev/blog/littlehorse-0.10-release#lhctl-binaries-and-release-notes" class="hash-link" aria-label="Direct link to lhctl-binaries-and-release-notes" title="Direct link to lhctl-binaries-and-release-notes">​</a></h3>
