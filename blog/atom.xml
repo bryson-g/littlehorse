@@ -2,11 +2,68 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://littlehorse.dev/blog</id>
     <title>LittleHorse Orchestrator Blog</title>
-    <updated>2024-09-02T00:00:00.000Z</updated>
+    <updated>2024-09-04T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://littlehorse.dev/blog"/>
     <subtitle>LittleHorse Orchestrator Blog</subtitle>
     <icon>https://littlehorse.dev/img/logo.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Basics Workflow concepts]]></title>
+        <id>https://littlehorse.dev/blog/2024/09/04/basics-of-workflows</id>
+        <link href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows"/>
+        <updated>2024-09-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[What is a workflow engine?]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-is-a-workflow-engine">What is a workflow engine?<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#what-is-a-workflow-engine" class="hash-link" aria-label="Direct link to What is a workflow engine?" title="Direct link to What is a workflow engine?">​</a></h2>
+<p>A workflow engine, in the simplest way is a way to run a series of steps,
+wait for input or output,
+how to handle problems, exceptions or retries
+and keep state of where in the steps the flow is.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="concepts">Concepts<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#concepts" class="hash-link" aria-label="Direct link to Concepts" title="Direct link to Concepts">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="workflow-specifications">Workflow specifications<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#workflow-specifications" class="hash-link" aria-label="Direct link to Workflow specifications" title="Direct link to Workflow specifications">​</a></h4>
+<p>A workflow specification is the configuration, or metadata object, that tells the engine what Tasks to run,
+what order to run the tasks,
+<strong>how to handle exceptions or failures,</strong>
+what variables are to be passed from task to task,
+and what inputs and outputs are required to run the workflow.</p>
+<p>In LittleHorse the Workflow Spec is submitted to and held by the LittleHorse server.
+It is a written in Code, using the LittleHorse SDK.<br>
+<!-- -->In the background LittleHorse server takes the submitted spec from the SDK, and compiles a protobuf object that is submitted to the LittleHorse server.</p>
+<p>Example:</p>
+<div class="language-declarative codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-declarative codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">public class QuickstartWorkflow {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public static final String WF_NAME = "quickstart";</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public static final String GREET = "greet";</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /*</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * This method defines the logic of our workflow</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public void quickstartWf(WorkflowThread wf) {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        // Create an input variable, make it searchable</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        WfRunVariable name = wf.addVariable("input-name", VariableType.STR).searchable();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        // Execute a task and pass in the variable.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        wf.execute(GREET, name);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    /*</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * This method returns a LittleHorse `Workflow` wrapper object that can be</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     * used to register the WfSpec to the LH Server.</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">     */</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    public Workflow getWorkflow() {</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        return Workflow.newWorkflow(WF_NAME, this::quickstartWf);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    }</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">}</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="tasks">Tasks<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#tasks" class="hash-link" aria-label="Direct link to Tasks" title="Direct link to Tasks">​</a></h4>
+<p>Tasks are the unit of work for a work flow engine.<br>
+<!-- -->It's best to think in examples:</p>
+<ul>
+<li>Change lower case letters to upper case letters.</li>
+<li>Call an API with an input variable and pass along the output.</li>
+<li>Wait for user input or an event to happen.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="task-workers">Task workers<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#task-workers" class="hash-link" aria-label="Direct link to Task workers" title="Direct link to Task workers">​</a></h4>
+<p>Task workers are the places where tasks are executed.<br>
+<!-- -->There can be one or many more task workers per task, this allows for scalability and reliability when executing tasks.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="advantages-of-workflow-engines">Advantages of Workflow engines<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#advantages-of-workflow-engines" class="hash-link" aria-label="Direct link to Advantages of Workflow engines" title="Direct link to Advantages of Workflow engines">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="failure-handling">Failure handling<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#failure-handling" class="hash-link" aria-label="Direct link to Failure handling" title="Direct link to Failure handling">​</a></h4>
+<p>When automating a business process what to do when something doesn't happen, happens with an unexpected outcome, or plain fails is a core challenge.<br>
+<!-- -->More often than not this is hard to reason about, leading to uncaught exceptions that lead to questioning completeness of a workflow or plain incorrect data.<br>
+<!-- -->A workflow engine standardizes how to throw an exception, where the exception is logged, and the logic around when/how to retry.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="microservices">Microservices<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#microservices" class="hash-link" aria-label="Direct link to Microservices" title="Direct link to Microservices">​</a></h4>
+<p>Colt McNealy talks about how to wrangle Microservices with a workflow engine, <a href="https://littlehorse.dev/blog/microservices-and-workflow" target="_blank" rel="noopener noreferrer">https://littlehorse.dev/blog/microservices-and-workflow</a>.<br>
+<!-- -->The inherent properties of a workflow engine enable developers, and operators, to regain control of their microservices deployments.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="api-gateway-">API gateway <a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#api-gateway-" class="hash-link" aria-label="Direct link to API gateway " title="Direct link to API gateway ">​</a></h4>
+<p>If we look at the properties of an API gateway and how they are used, a workflow engine makes sense.</p>
+<p>The usage of an API gateway is to have a single layer that abstracts further endpoints.<br>
+<!-- -->In practice this most often means calling the same API gateway multiple times, receiving the requested data, and doing some date manipulation or calculations at the application layer.
+A workflow engine performs all of the most common actions, and includes things like centralized security, possible data obscurity, failure handling, observability and allows for operators to scale compute.
+All while still maintaining a central plane that can be shared across an entire orginization.<br>
+<!-- -->Additionally a workflow engine still allows for the standard CRUD(Create, Read, Update, Delete) operations that an API gateway provides.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="user-tasks">User tasks<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#user-tasks" class="hash-link" aria-label="Direct link to User tasks" title="Direct link to User tasks">​</a></h4>
+<p>A user task allows a developer to inject a human into the process.  Using UserTasks you can assign a human to do something.
+Often times this means having a human approve a process, or reject a request.</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="integrations">Integrations<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#integrations" class="hash-link" aria-label="Direct link to Integrations" title="Direct link to Integrations">​</a></h4>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="common-use-cases">Common use cases<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#common-use-cases" class="hash-link" aria-label="Direct link to Common use cases" title="Direct link to Common use cases">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="process-orchestration-or-microservices">Process Orchestration or Microservices<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#process-orchestration-or-microservices" class="hash-link" aria-label="Direct link to Process Orchestration or Microservices" title="Direct link to Process Orchestration or Microservices">​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="data-manipulation">Data manipulation<a href="https://littlehorse.dev/blog/2024/09/04/basics-of-workflows#data-manipulation" class="hash-link" aria-label="Direct link to Data manipulation" title="Direct link to Data manipulation">​</a></h4>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Microservices and Workflow: A Match Made in Heaven]]></title>
         <id>https://littlehorse.dev/blog/microservices-and-workflow</id>
