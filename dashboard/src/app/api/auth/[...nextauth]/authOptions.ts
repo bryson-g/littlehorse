@@ -6,16 +6,16 @@ import { signOut } from 'next-auth/react'
 const providers: Provider[] = []
 
 if (
-  process.env.KEYCLOAK_CLIENT_ID &&
-  process.env.KEYCLOAK_CLIENT_ID !== '' &&
-  process.env.KEYCLOAK_CLIENT_SECRET &&
-  process.env.KEYCLOAK_CLIENT_SECRET !== ''
+  process.env.LHD_OAUTH_CLIENT_ID &&
+  process.env.LHD_OAUTH_CLIENT_ID !== '' &&
+  process.env.LHD_OAUTH_CLIENT_SECRET &&
+  process.env.LHD_OAUTH_CLIENT_SECRET !== ''
 ) {
   providers.push(
     KeycloakProvider({
-      clientId: process.env.KEYCLOAK_CLIENT_ID,
-      clientSecret: process.env.KEYCLOAK_CLIENT_SECRET,
-      issuer: process.env.KEYCLOAK_ISSUER_URI,
+      clientId: process.env.LHD_OAUTH_CLIENT_ID,
+      clientSecret: process.env.LHD_OAUTH_CLIENT_SECRET,
+      issuer: process.env.LHD_OAUTH_ISSUER_URI,
     })
   )
 }
@@ -23,6 +23,9 @@ if (
 export const authOptions: AuthOptions = {
   providers,
   callbacks: {
+    async redirect({ baseUrl }) {
+      return process.env.LHD_OAUTH_CALLBACK_URL || baseUrl; // Use custom callback URL or fallback to base URL
+    },
     jwt: async ({ token, account }) => {
       if (account) {
         return {
@@ -41,4 +44,5 @@ export const authOptions: AuthOptions = {
       }
     },
   },
+  secret: process.env.LHD_OAUTH_ENCRYPT_SECRET,
 }

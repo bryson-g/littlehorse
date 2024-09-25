@@ -18,7 +18,7 @@ If running the app without Docker, you need to fill in the environment variables
 - `LHC_API_PROTOCOL` specify the communication protocol PLAINTEXT or TLS. If not provided it defaults to PLAINTEXT.
 - `LHD_OAUTH_ENABLED` enable oauth authentication
 - `LHD_OAUTH_ENCRYPT_SECRET` random string that will be used to encrypt the secrets and also the JWT token
-- `LHD_OAUTH_CALLBACK_URL` the url (domain) in which the dashboard will run (required for some authentication methods). For your local you can use: `http:/localhost:3001/`
+- `LHD_OAUTH_CALLBACK_URL` the url (domain) in which the dashboard will run (required for some authentication methods). For your local you can use: `http:/localhost:3000/`
 - `LHD_OAUTH_CLIENT_ID` the client id configured in keycloack
 - `LHD_OAUTH_CLIENT_SECRET` the client secret configured in keycloack
 - `LHD_OAUTH_ISSUER_URI` the keycloack
