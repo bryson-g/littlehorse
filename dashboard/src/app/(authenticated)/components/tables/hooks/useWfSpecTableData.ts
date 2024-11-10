@@ -36,7 +36,7 @@ export function useWfSpecTableData(pages: SearchResultProps['pages'] = []): WfSp
 
   const results = useMemo(() => pages.flatMap(page => page.results), [pages])
 
-  const wfSpecsData = useMemo(() => {
+  let wfSpecsData = useMemo(() => {
     const specMap = new Map<string, WfSpecData>()
 
     results.forEach(({ name, majorVersion, revision }: WfSpecId) => {
@@ -60,7 +60,13 @@ export function useWfSpecTableData(pages: SearchResultProps['pages'] = []): WfSp
     return Array.from(specMap.values())
   }, [results])
 
-  const wfSpecSource = useMemo(() => wfSpecsData.map(({ name }) => ({ text: name, id: name })).reverse(), [wfSpecsData])
+  // ! Uncomment below to test with dummy data for multiple versions
+  wfSpecsData = dummyWfSpecData
+
+  const wfSpecSource = useMemo(() => {
+    if (!selectedWfSpec) setSelectedWfSpec(wfSpecsData[wfSpecsData.length - 1].name)
+    return wfSpecsData.map(({ name }) => ({ text: name, id: name })).reverse()
+  }, [wfSpecsData, selectedWfSpec])
 
   const majorVersionSource = useMemo(() => {
     const spec = wfSpecsData.find(s => s.name === selectedWfSpec)
@@ -107,3 +113,11 @@ export function useWfSpecTableData(pages: SearchResultProps['pages'] = []): WfSp
     revisionSource,
   }
 }
+
+const dummyWfSpecData: WfSpecData[] = Array.from({ length: 12 }, (_, i) => ({
+  name: `sample-wfspec-name${i}`,
+  versions: Array.from({ length: 11 }, (_, j) => ({
+    majorVersion: j,
+    revisions: Array.from({ length: 11 }, (_, k) => k),
+  })),
+}))
