@@ -9,7 +9,7 @@ import { Dispatch, FC, Fragment, SetStateAction } from 'react'
 
 export const Group: FC<GroupProps> = ({ title, source, setState, state }) => {
     return (
-        <div className="flex h-72 w-44 flex-col">
+        <div className="flex h-72 min-w-44 w-fit flex-col">
             <h3 className="text-xl font-bold">{title}</h3>
 
             <ScrollArea className="flex h-full w-full flex-col gap-3 rounded-md border p-3 overflow-hidden">
