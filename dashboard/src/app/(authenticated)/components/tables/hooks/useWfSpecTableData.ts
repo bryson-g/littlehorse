@@ -2,37 +2,34 @@ import { WfSpecId } from 'littlehorse-client/proto'
 import { useMemo, useState, useEffect } from 'react'
 import { SearchResultProps } from '..'
 
-interface WfSpecSource {
-  text: string
-  id: string | number
-}
+import { GroupItem, GroupProps } from '../../Group'
 
-interface VersionData {
+type VersionData = {
   majorVersion: number
   revisions: number[]
 }
 
-interface WfSpecData {
+type WfSpecData = {
   name: string
   versions: VersionData[]
 }
 
-export interface WfSpecTableData {
-  selectedWfSpec: string | undefined
-  setSelectedWfSpec: (value: string | undefined) => void
-  selectedMajorVersion: number | undefined
-  setSelectedMajorVersion: (value: number | undefined) => void
-  selectedRevision: number | undefined
-  setSelectedRevision: (value: number | undefined) => void
-  wfSpecSource: WfSpecSource[]
-  majorVersionSource: WfSpecSource[]
-  revisionSource: WfSpecSource[]
+export type WfSpecTableData = {
+  selectedWfSpec: GroupItem | undefined
+  setSelectedWfSpec: GroupProps['setSelectedState']
+  selectedMajorVersion: GroupItem | undefined
+  setSelectedMajorVersion: GroupProps['setSelectedState']
+  selectedRevision: GroupItem | undefined
+  setSelectedRevision: GroupProps['setSelectedState']
+  wfSpecSource: GroupItem[]
+  majorVersionSource: GroupItem[]
+  revisionSource: GroupItem[]
 }
 
 export function useWfSpecTableData(pages: SearchResultProps['pages'] = []): WfSpecTableData {
-  const [selectedWfSpec, setSelectedWfSpec] = useState<string | undefined>(undefined)
-  const [selectedMajorVersion, setSelectedMajorVersion] = useState<number | undefined>(undefined)
-  const [selectedRevision, setSelectedRevision] = useState<number | undefined>(undefined)
+  const [selectedWfSpec, setSelectedWfSpec] = useState<GroupItem | undefined>(undefined)
+  const [selectedMajorVersion, setSelectedMajorVersion] = useState<GroupItem | undefined>(undefined)
+  const [selectedRevision, setSelectedRevision] = useState<GroupItem | undefined>(undefined)
 
   const results = useMemo(() => pages.flatMap(page => page.results), [pages])
 
@@ -61,44 +58,53 @@ export function useWfSpecTableData(pages: SearchResultProps['pages'] = []): WfSp
   }, [results])
 
   // ! Uncomment below to test with dummy data for multiple versions
-  wfSpecsData = dummyWfSpecData
+  // wfSpecsData = dummyWfSpecData
 
   const wfSpecSource = useMemo(() => {
-    if (!selectedWfSpec) setSelectedWfSpec(wfSpecsData[wfSpecsData.length - 1].name)
-    return wfSpecsData.map(({ name }) => ({ text: name, id: name })).reverse()
+    const source = wfSpecsData.map(({ name }) => ({ text: name, id: name, value: name }) as GroupItem).reverse()
+    if (!selectedWfSpec && source.length > 0) setSelectedWfSpec(source[0])
+    return source
   }, [wfSpecsData, selectedWfSpec])
 
   const majorVersionSource = useMemo(() => {
-    const spec = wfSpecsData.find(s => s.name === selectedWfSpec)
+    const spec = wfSpecsData.find(s => s.name === selectedWfSpec?.id)
     return (
       spec?.versions
-        .map(v => ({
-          text: `v${v.majorVersion}`,
-          id: v.majorVersion,
-        }))
+        .map(
+          v =>
+            ({
+              text: `v${v.majorVersion}`,
+              id: v.majorVersion,
+              value: v.majorVersion,
+            }) as GroupItem
+        )
         .reverse() ?? []
     )
   }, [wfSpecsData, selectedWfSpec])
 
   const revisionSource = useMemo(() => {
-    const spec = wfSpecsData.find(s => s.name === selectedWfSpec)
-    const version = spec?.versions.find(v => v.majorVersion === selectedMajorVersion)
+    const spec = wfSpecsData.find(s => s.name === selectedWfSpec?.id)
+    const version = spec?.versions.find(v => v.majorVersion === selectedMajorVersion?.id)
     return (
       version?.revisions
-        .map(revision => ({
-          text: `v${selectedMajorVersion}.${revision}`,
-          id: revision,
-        }))
+        .map(
+          revision =>
+            ({
+              text: `v${selectedMajorVersion?.id}.${revision}`,
+              id: revision,
+              value: `/wfSpec/${selectedWfSpec?.id}/${selectedMajorVersion?.id}.${revision}`,
+            }) as GroupItem
+        )
         .reverse() ?? []
     )
   }, [wfSpecsData, selectedWfSpec, selectedMajorVersion])
 
   useEffect(() => {
-    if (majorVersionSource.length > 0) setSelectedMajorVersion(majorVersionSource[0].id)
+    if (majorVersionSource.length > 0) setSelectedMajorVersion(majorVersionSource[0])
   }, [selectedWfSpec, majorVersionSource])
 
   useEffect(() => {
-    if (revisionSource.length > 0) setSelectedRevision(revisionSource[0].id)
+    if (revisionSource.length > 0) setSelectedRevision(revisionSource[0])
   }, [selectedWfSpec, selectedMajorVersion, revisionSource])
 
   return {
