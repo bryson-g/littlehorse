@@ -1,11 +1,12 @@
-import { WfSpecId } from 'littlehorse-client/proto'
-import { FC, Fragment } from 'react'
-
+import { FC } from 'react'
 import { Group } from '../Group'
 import { useWfSpecTableData } from './hooks/useWfSpecTableData'
 import { SearchResultProps } from '.'
+import { useRouter } from 'next/navigation'
 
 export const WfSpecTable: FC<SearchResultProps> = ({ pages = [] }) => {
+  const router = useRouter()
+
   const {
     selectedWfSpec,
     setSelectedWfSpec,
@@ -25,14 +26,22 @@ export const WfSpecTable: FC<SearchResultProps> = ({ pages = [] }) => {
   return (
     <div className="py-4">
       <div className="flex gap-10">
-        <Group title="WfSpecs" source={wfSpecSource} state={selectedWfSpec} setState={setSelectedWfSpec} />
+        <Group title="WfSpecs" source={wfSpecSource} selectedState={selectedWfSpec} setSelectedState={setSelectedWfSpec} />
         <Group
           title="Major Versions"
           source={majorVersionSource}
-          state={selectedMajorVersion}
-          setState={setSelectedMajorVersion}
+          selectedState={selectedMajorVersion}
+          setSelectedState={setSelectedMajorVersion}
         />
-        <Group title="Revisions" source={revisionSource} state={selectedRevision} setState={setSelectedRevision} />
+        <Group
+          title="Revisions"
+          source={revisionSource}
+          selectedState={selectedRevision}
+          setSelectedState={setSelectedRevision}
+          onClick={(item) => {
+            router.push(`/wfSpec/${selectedWfSpec?.id}/${selectedMajorVersion?.id}.${item.id}`)
+          }}
+        />
       </div>
     </div>
   )
